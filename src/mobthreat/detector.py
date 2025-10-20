@@ -51,22 +51,18 @@ def compare_apps(known_name: str, known_package: Optional[str], candidate: AppRe
     across name, developer, description, and optional icon/metadata factors.
     """
 
-    # --- Name and Developer similarity ---
     name_score = fuzz.token_sort_ratio(known_name, candidate.title)
     dev_score = fuzz.token_sort_ratio(known_name, candidate.developer)
 
-    # --- Package match ---
     package_match = False
     if known_package and known_package.strip():
         package_match = (known_package.lower() == (candidate.package or "").lower())
 
-    # --- Icon similarity placeholder ---
     icon_dist = None
     if candidate.icon_url:
         cand_hash = fetch_image_as_hash(candidate.icon_url)
-        icon_dist = None  # placeholder for now, to avoid unnecessary slowdown
+        icon_dist = None 
 
-    # --- Description Keyword Analysis ---
     desc_score = 0
     desc = (candidate.raw.get("description") or "").lower()
     if desc:
@@ -79,14 +75,12 @@ def compare_apps(known_name: str, known_package: Optional[str], candidate: AppRe
             desc_score = _get(thresholds, "description_bonus", 20)
             logger.debug(f"Description match for '{candidate.title}': {hits}")
 
-    # --- Weighting system ---
     w_name = 0.6
     w_dev = 0.15
     w_pkg = 0.15
     w_icon = 0.05
-    w_desc = _get(thresholds, "description_weight", 15) / 100.0  # 0–1 scale
+    w_desc = _get(thresholds, "description_weight", 15) / 100.0 
 
-    # --- Compute overall score ---
     overall = (
         name_score * w_name
         + dev_score * w_dev

@@ -25,7 +25,7 @@ class AppStoreScanner(BaseScanner):
                 developer=item.get("sellerName", ""),
                 icon_url=icon,
                 raw=item,
-                keyword=keyword,  # ✅ track which keyword produced this
+                keyword=keyword, 
             )
             out.append(rec)
         return out

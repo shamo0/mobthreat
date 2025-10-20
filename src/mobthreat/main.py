@@ -55,7 +55,6 @@ def scan_target(target, config, quiet=False):
     print(f"\n{Fore.CYAN}{Style.BRIGHT}→ Scanning target: {target.company_name}{Style.RESET_ALL}")
     print(f"  Keywords: {', '.join(target.keywords)}")
 
-    # --- Load cache ---
     if os.path.exists(cache_file):
         try:
             with open(cache_file, "r") as f:
@@ -103,7 +102,6 @@ def scan_target(target, config, quiet=False):
                         notified_ids.add(app_id)
                         findings.append((known, match))
 
-    # --- Results ---
     duration = time.time() - start_time
     print(f"\n  {Fore.BLUE}[SUMMARY]{Style.RESET_ALL} Scanned {total_scanned} apps in {duration:.1f}s")
 
@@ -147,13 +145,11 @@ def scan_target(target, config, quiet=False):
                 "overall_score": match.overall_score,
             })
 
-        # Export to JSON
         out_file = f"findings_{target.id}.json"
         with open(out_file, "w") as f:
             json.dump(exported, f, indent=2)
         print(f"  {Fore.CYAN}[EXPORTED]{Style.RESET_ALL} {len(exported)} findings → {out_file}")
 
-    # --- Update cache ---
     try:
         all_packages = seen_packages.union({
             match.candidate.package for _, match in findings if match.candidate.package

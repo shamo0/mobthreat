@@ -26,7 +26,7 @@ class PlayStoreScanner(BaseScanner):
                 developer=r.get("developer", ""),
                 icon_url=r.get("icon", ""),
                 raw=r,
-                keyword=keyword,  # ✅ store search context
+                keyword=keyword, 
             )
             out.append(rec)
         return out

@@ -21,7 +21,7 @@ class NotificationConfig:
 @dataclass
 class TargetApp:
     name: str
-    platform: str  # android | ios
+    platform: str  
     package: Optional[str] = None
     bundle: Optional[str] = None
 
