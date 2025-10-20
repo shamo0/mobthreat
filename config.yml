@@ -10,33 +10,18 @@ thresholds:
   description_bonus: 20 
 
 targets:
-  - id: Liberty
-    company_name: "LibertyBank"
-    keywords:
-      - "Liberty"
-      - "LibertyBank"
-    known_apps:
-      - name: "Liberty"
-        platform: android
-        package: "ge.lb.mobilebank"
-      - name: "Liberty Mobile"
-        platform: ios
-        bundle: "id1455225055"
-
-
-# targets:
-#  - id: <ID>
-#    company_name: "<Name>"
-#    keywords:
-#      - "Keyword 1"
-#      - "Keyword 2"
-#    known_apps:
-#      - name: "Known App Name"
-#        platform: android
-#        package: "<Android Package>"
-#      - name: "iOS App name"
-#        platform: ios
-#        bundle: "<App ID>"
+ - id: <ID>
+   company_name: "<Name>"
+   keywords:
+     - "Keyword 1"
+     - "Keyword 2"
+   known_apps:
+     - name: "Known App Name"
+       platform: android
+       package: "<Android Package>"
+     - name: "iOS App name"
+       platform: ios
+       bundle: "<App ID>"
 
 # webhook notifications: set to null to disable and use stdout
 notifications:
