@@ -1,4 +1,5 @@
 # Mobthreat
+<img width="1536" height="464" alt="mobthreatlogo" src="https://github.com/user-attachments/assets/c4db43ad-73aa-46d4-b49e-247e8b38f920" />
 
 ## Mobile App Impersonation & Threat Intelligence Scanner
 
