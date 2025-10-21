@@ -8,6 +8,10 @@ thresholds:
   overall_score: 50
   description_weight: 15  
   description_bonus: 20 
+  ocr_weight: 10 
+  brand_keywords:
+    - "Keyword 1"
+    - "Keyword 2"
 
 targets:
  - id: <ID>

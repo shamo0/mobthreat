@@ -37,7 +37,8 @@ def print_config_summary(config):
         f"  • Package exact match   : {get('package_exact')}\n"
         f"  • Icon pHash distance   : {get('icon_phash_distance')}\n"
         f"  • Description weight    : {get('description_weight')}\n"
-        f"  • Description bonus     : {get('description_bonus')}"
+        f"  • Description bonus     : {get('description_bonus')}\n"
+        f"  • OCR weight            : {get('ocr_weight', 0)}"
     )
     print(f"  • Poll interval (mins)  : {config.poll_interval_minutes}")
     print(f"  • Notifications         : Slack={config.notifications.slack_webhook}, Discord={config.notifications.discord_webhook}\n")
