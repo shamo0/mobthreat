@@ -7,16 +7,24 @@ logger = logging.getLogger(__name__)
 
 @dataclass
 class Thresholds:
-    name_fuzzy: int
-    package_exact: bool
-    icon_phash_distance: int
-    overall_score: int
+    name_fuzzy: int = 75
+    package_exact: bool = True
+    icon_phash_distance: int = 8
+    overall_score: int = 70
+
+    # new fields added for full config.yml support
+    description_weight: int = 15
+    description_bonus: int = 20
+    ocr_weight: int = 10
+    brand_keywords: List[str] = None
+
 
 @dataclass
 class NotificationConfig:
     slack_webhook: Optional[str]
     discord_webhook: Optional[str]
     extra_recipients: List[str]
+
 
 @dataclass
 class TargetApp:
@@ -25,12 +33,14 @@ class TargetApp:
     package: Optional[str] = None
     bundle: Optional[str] = None
 
+
 @dataclass
 class Target:
     id: str
     company_name: str
     keywords: List[str]
     known_apps: List[TargetApp]
+
 
 @dataclass
 class Config:
@@ -39,6 +49,7 @@ class Config:
     targets: List[Target]
     notifications: NotificationConfig
     logging: Dict[str, Any]
+
 
 def load_config(path: str) -> Config:
     with open(path, "r", encoding="utf-8") as f:
@@ -50,6 +61,10 @@ def load_config(path: str) -> Config:
         package_exact=t.get("package_exact", True),
         icon_phash_distance=t.get("icon_phash_distance", 8),
         overall_score=t.get("overall_score", 70),
+        description_weight=t.get("description_weight", 15),
+        description_bonus=t.get("description_bonus", 20),
+        ocr_weight=t.get("ocr_weight", 10),
+        brand_keywords=t.get("brand_keywords", []),
     )
 
     targets = []

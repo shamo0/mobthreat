@@ -95,6 +95,10 @@ def scan_target(target, config, quiet=False):
                 for known in target.known_apps:
                     if known.platform != platform:
                         continue
+                    if known.package and cand.package and known.package.lower() == cand.package.lower():
+                        continue
+                    if hasattr(known, "bundle") and known.bundle and cand.package and str(known.bundle).lower() == cand.package.lower():
+                        continue
                     match = compare_apps(known.name, known.package or known.bundle, cand, config.thresholds)
                     if is_suspicious(match, config.thresholds):
                         app_id = match.candidate.package or match.candidate.title
