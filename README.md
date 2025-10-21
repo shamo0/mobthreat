@@ -37,27 +37,32 @@ thresholds:
   package_exact: true
   icon_phash_distance: 8
   overall_score: 50
-  description_weight: 15  
-  description_bonus: 20 
+  description_weight: 15
+  description_bonus: 20
+  ocr_weight: 10    
+  brand_keywords:
+    - "OpenAI"
+    - "ChatGPT"
 
 targets:
-  - id: <ID>
-    company_name: "<Name>"
+  - id: ChatGPT
+    company_name: "OpenAI"
     keywords:
-      - "Keyword 1"
-      - "Keyword 2"
+      - "ChatGPT"
+      
+      - "OpenAI"
     known_apps:
-      - name: "Known App Name"
+      - name: "ChatGPT"
         platform: android
-        package: "<Android Package>"
-      - name: "iOS App name"
+        package: "com.openai.chatgpt"
+      - name: "ChatGPT"
         platform: ios
-        bundle: "<App ID>"
+        bundle: "id6448311069"
 
 notifications:
   slack_webhook: null
   discord_webhook: null
-
+  extra_recipients: []
 logging:
   level: INFO
 ```
