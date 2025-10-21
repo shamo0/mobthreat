@@ -49,7 +49,6 @@ targets:
     company_name: "OpenAI"
     keywords:
       - "ChatGPT"
-      
       - "OpenAI"
     known_apps:
       - name: "ChatGPT"
@@ -74,6 +73,8 @@ logging:
 ```
 python -m src.mobthreat.main --config config.yml --once
 ```
+![demogif](https://github.com/user-attachments/assets/4c9d4944-9b3b-4a50-b876-a1a0d0838535)
+
 
 ### Continuous Monitoring
 
